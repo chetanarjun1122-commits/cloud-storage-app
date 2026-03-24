@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cloud File Storage</title>
+</head>
+<body>
+  <h2>Upload File</h2>
+  <input type="file" id="fileInput" />
+  <button onclick="uploadFile()">Upload</button>
+
+<script>
+const bucketUrl = "https://my-file-storage-chetan.s3.amazonaws.com/";
+
+async function uploadFile() {
+  const file = document.getElementById("fileInput").files[0];
+  await fetch(bucketUrl + file.name, {
+    method: "PUT",
+    body: file
+  });
+  alert("Uploaded!");
+}
+</script>
+</body>
+</html>
